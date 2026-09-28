@@ -1,12 +1,15 @@
-package Vista;
+package view;
 
 import dao.PedidoDAO;
 import model.Pedido;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+
+/**
+ * Ventana de consulta, que muestra todos los pedidos en una tabla
+ */
 
 public class VentanaListaPedidos extends JFrame {
 

@@ -1,10 +1,13 @@
-package Vista;
+package view;
 
 import dao.RepartidorDAO;
 import model.Repartidor;
-
 import javax.swing.*;
 import java.awt.*;
+
+/**
+ * Ventana para ingresar un nuevo repartidor al sistema.
+ */
 
 public class VentanaRegistroRepartidor extends JFrame {
 

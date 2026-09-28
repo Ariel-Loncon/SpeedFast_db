@@ -1,4 +1,4 @@
-package Vista;
+package view;
 
 import dao.EntregaDAO;
 import dao.PedidoDAO;
@@ -6,12 +6,15 @@ import dao.RepartidorDAO;
 import model.Entrega;
 import model.Pedido;
 import model.Repartidor;
-
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+
+/**
+ * Ventana pra vincular un pedido con un repartidor
+ */
 
 public class VentanaRegistroEntrega extends JFrame {
 

@@ -1,7 +1,7 @@
 package app;
 
 import dao.ConexionBD;
-import Vista.VentanaPrincipal;
+import view.VentanaPrincipal;
 
 import javax.swing.*;
 import java.sql.Connection;

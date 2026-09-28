@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Repartidor;
 
+/**
+ * Clase encargada de gestionar el acceso a Datos (DAO) para realizar operaciones CRUD sobre la tabla 'repartidor'.
+ */
+
 public class RepartidorDAO {
 
     public boolean guardar(Repartidor repartidor) {

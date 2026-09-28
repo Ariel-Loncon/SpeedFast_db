@@ -3,6 +3,11 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Representa el registro de asignación o concreción de una entrega.
+ * Vinculación de un pedido con un repartidor en una fecha y hora específicas.
+ */
+
 public class Entrega {
 
     private int id;
@@ -11,13 +16,21 @@ public class Entrega {
     private LocalDate fecha;
     private LocalTime hora;
 
+    /**
+     *
+     * @param idPedido Identificador único del pedido
+     * @param idRepartidor Identificador único del repartidor.
+     * @param fecha Fecha de la entrega.
+     * @param hora Hora de la entrega.
+     */
+
     public Entrega(int idPedido, int idRepartidor, LocalDate fecha, LocalTime hora) {
         this.idPedido = idPedido;
         this.idRepartidor = idRepartidor;
         this.fecha = fecha;
         this.hora = hora;
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public int getId() {
         return id;

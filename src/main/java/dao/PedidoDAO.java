@@ -10,6 +10,10 @@ import java.util.List;
 import model.EstadoPedido;
 import model.Pedido;
 
+/**
+ * Objeto de Acceso a Datos (DAO) para realizar operaciones CRUD sobre la tabla 'pedido'.
+ */
+
 public class PedidoDAO {
 
     public boolean guardar(Pedido pedido) {

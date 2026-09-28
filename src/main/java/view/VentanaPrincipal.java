@@ -1,7 +1,12 @@
-package Vista;
+package view;
 
 import javax.swing.*;
 import java.awt.*;
+
+/**
+ * Ventana principal del sistema
+ * Menù central para la navegación en la interfaz
+ */
 
 public class VentanaPrincipal extends JFrame {
 
@@ -52,9 +57,9 @@ public class VentanaPrincipal extends JFrame {
         add(panelBotones, BorderLayout.CENTER);
 
         // Eventos
-        btnRegistrarPedido.addActionListener(e -> new Vista.VentanaRegistroPedido().setVisible(true));
-        btnRegistrarRepartidor.addActionListener(e -> new Vista.VentanaRegistroRepartidor().setVisible(true));
-        btnListarPedidos.addActionListener(e -> new Vista.VentanaListaPedidos().setVisible(true));
+        btnRegistrarPedido.addActionListener(e -> new view.VentanaRegistroPedido().setVisible(true));
+        btnRegistrarRepartidor.addActionListener(e -> new view.VentanaRegistroRepartidor().setVisible(true));
+        btnListarPedidos.addActionListener(e -> new view.VentanaListaPedidos().setVisible(true));
         btnRegistrarEntrega.addActionListener(e -> new VentanaRegistroEntrega().setVisible(true));
     }
 

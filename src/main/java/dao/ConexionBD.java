@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Clase encargada de gestionar la conexión con la base de datos MySQL
+ */
+
 public class ConexionBD {
 
     private static final String URL =

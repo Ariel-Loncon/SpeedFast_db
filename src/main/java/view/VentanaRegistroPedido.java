@@ -1,11 +1,14 @@
-package Vista;
+package view;
 
 import dao.PedidoDAO;
 import model.EstadoPedido;
 import model.Pedido;
-
 import javax.swing.*;
 import java.awt.*;
+
+/**
+ * Ventana para ingresar un nuevo pedido al sistema.
+ */
 
 public class VentanaRegistroPedido extends JFrame {
 

@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.sql.Time;
 import model.Entrega;
 
+/**
+ * Clase encargada de gestionar el acceso a Datos (DAO) para la gestión del registro de entregas en la base de datos.
+ */
+
 public class EntregaDAO {
 
     public boolean guardar(Entrega entrega) {

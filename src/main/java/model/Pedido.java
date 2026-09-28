@@ -1,10 +1,23 @@
 package model;
 
+/**
+ * Clase que representa al Pedido dentro del sistema
+ * Contiene la información sobre el destino, el tipo de entrega y su estado actual.
+ */
+
 public class Pedido {
     private int id;
     private String direccionEntrega;
     private String tipoEntrega;
     private EstadoPedido estado;
+
+    /**
+     *
+     * @param id Identificador único del pedido
+     * @param direccionEntrega Dirección de entrega del pedido
+     * @param tipoEntrega Tipo de entrega del pedido
+     * @param estado Estado actual del pedido
+     */
 
     public Pedido(int id, String direccionEntrega, String tipoEntrega, EstadoPedido estado) {
         this.id = id;
