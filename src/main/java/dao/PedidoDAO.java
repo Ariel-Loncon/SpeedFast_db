@@ -17,7 +17,7 @@ import model.Pedido;
 public class PedidoDAO {
 
     public boolean guardar(Pedido pedido) {
-        String sql = "INSERT INTO pedido (direccion, tipo, estado) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO pedidos (direccion, tipo, estado) VALUES (?, ?, ?)";
 
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -26,8 +26,7 @@ public class PedidoDAO {
             ps.setString(2, pedido.getTipoEntrega());
             ps.setString(3, pedido.getEstado() != null ? pedido.getEstado().name() : "PENDIENTE");
 
-            int filasAfectadas = ps.executeUpdate();
-            return filasAfectadas > 0;
+            return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
             System.err.println("Error al guardar pedido: " + e.getMessage());
@@ -37,16 +36,15 @@ public class PedidoDAO {
 
     public List<Pedido> listarTodos() {
         List<Pedido> lista = new ArrayList<>();
-        String sql = "SELECT id, direccion, tipo, estado FROM pedido";
+        String sql = "SELECT id, direccion, tipo, estado FROM pedidos";
 
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                // Convertir la cadena almacenada en BD al tipo Enum EstadoPedido
                 String estadoStr = rs.getString("estado");
-                EstadoPedido estadoEnum = EstadoPedido.valueOf(estadoStr);
+                EstadoPedido estadoEnum = (estadoStr != null) ? EstadoPedido.valueOf(estadoStr) : EstadoPedido.PENDIENTE;
 
                 Pedido pedido = new Pedido(
                         rs.getInt("id"),
@@ -62,5 +60,39 @@ public class PedidoDAO {
         }
 
         return lista;
+    }
+
+    public boolean actualizar(Pedido pedido) {
+        String sql = "UPDATE pedidos SET direccion = ?, tipo = ?, estado = ? WHERE id = ?";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, pedido.getDireccionEntrega());
+            ps.setString(2, pedido.getTipoEntrega());
+            ps.setString(3, pedido.getEstado().name());
+            ps.setInt(4, pedido.getId());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar pedido: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminar(int id) {
+        String sql = "DELETE FROM pedidos WHERE id = ?";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar pedido: " + e.getMessage());
+            return false;
+        }
     }
 }

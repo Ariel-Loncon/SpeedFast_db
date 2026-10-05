@@ -27,6 +27,8 @@ public class Main {
 }
 
 
+
+
 /*package app;
 import dao.ConexionBD;
 import java.sql.Connection;
@@ -38,5 +40,6 @@ public class Main {
         } catch (SQLException e) {
             System.out.println(
                     "Error de conexión: " + e.getMessage());}}}
+
 
  */

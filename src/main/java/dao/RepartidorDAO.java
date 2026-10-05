@@ -15,15 +15,13 @@ import model.Repartidor;
 public class RepartidorDAO {
 
     public boolean guardar(Repartidor repartidor) {
-        String sql = "INSERT INTO repartidor (nombre) VALUES (?)";
+        String sql = "INSERT INTO repartidores (nombre) VALUES (?)";
 
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, repartidor.getNombreRepartidor());
-
-            int filasAfectadas = ps.executeUpdate();
-            return filasAfectadas > 0;
+            return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
             System.err.println("Error al guardar repartidor: " + e.getMessage());
@@ -33,7 +31,7 @@ public class RepartidorDAO {
 
     public List<Repartidor> listarTodos() {
         List<Repartidor> lista = new ArrayList<>();
-        String sql = "SELECT id, nombre FROM repartidor";
+        String sql = "SELECT id, nombre FROM repartidores";
 
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -52,5 +50,37 @@ public class RepartidorDAO {
         }
 
         return lista;
+    }
+
+    public boolean actualizar(Repartidor repartidor) {
+        String sql = "UPDATE repartidores SET nombre = ? WHERE id = ?";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, repartidor.getNombreRepartidor());
+            ps.setInt(2, repartidor.getIdRepartidor());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar repartidor: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean eliminar(int id) {
+        String sql = "DELETE FROM repartidores WHERE id = ?";
+
+        try (Connection con = ConexionBD.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar repartidor: " + e.getMessage());
+            return false;
+        }
     }
 }
