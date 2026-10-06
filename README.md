@@ -1,7 +1,6 @@
 ![Duoc UC](https://www.duoc.cl/wp-content/uploads/2022/09/logo-0.png)
 
-# 🧠  Actividad Formativa 5: Conectando aplicaciones java con bases de datos mediante JDBC
-
+# 🧠  Actividad Sumativa 3: Persistiendo datos con objetos y bases de datos
 ## 👤 Autor del proyecto
 - **Nombre completo:** [Ariel Gustavo Loncon Lefimil]
 - **Sección:** [008A]
@@ -10,36 +9,33 @@
 
 ---
 
-# Sistema de Gestión de Envíos - SpeedFast (Semana 7)
+# Sistema de Gestión de Envíos - SpeedFast (Semana 8)
 
-Proyecto desarrollado para la asignatura **Desarrollo Orientado a Objetos II** (Evaluación Formativa / Semana 7). La solución evoluciona la plataforma de SpeedFast al integrar **persistencia de datos en MySQL** a través de **JDBC**, permitiendo el registro y consulta de información en tiempo real desde una interfaz gráfica construida con **Java Swing**.
+Proyecto desarrollado para la asignatura **Desarrollo Orientado a Objetos II** (Evaluación Sumativa / Semana 8). La solución evoluciona la plataforma de SpeedFast al completar el ciclo funcional **CRUD (Crear, Leer, Actualizar y Eliminar)** mediante persistencia de datos en MySQL con **JDBC** e integración completa en una interfaz gráfica con **Java Swing**.
 
 ---
 
 ## 📋 Descripción del Proyecto y Nuevos Requerimientos
 
-En esta etapa se implementa la arquitectura de acceso a datos mediante la capa **DAO (Data Access Object)** y el conector **JDBC**. La aplicación permite registrar y consultar de forma persistente los pedidos, repartidores y la asignación de entregas directamente en la base de datos MySQL `speedfast_db`, garantizando la integridad de los datos entre ejecuciones.
+Esta etapa integra la lógica de negocio completa con la gestión de datos persistente. Permite administrar de manera interactiva repartidores, pedidos y la asignación de entregas en la base de datos `speedfast_db`, aplicando acceso seguro mediante `PreparedStatement`, manejo de excepciones SQL y validaciones de entrada en los formularios.
 
 ---
 
 ## ✨ Características y Principios Aplicados
 
-### 1. Gestión de Conexión a Base de Datos (`ConexionBD`)
-- **Control de Recursos JDBC:** Implementa una clase centralizada para gestionar la conexión con MySQL mediante `DriverManager`.
-- **Manejo Seguro de Recursos:** Uso del patrón `try-with-resources` para la apertura y cierre automático de conexiones (`Connection`), declaraciones (`PreparedStatement`) y conjuntos de resultados (`ResultSet`).
+### 1. CRUD Completo con JDBC y DAO
+- **Operaciones Persistentes:** Implementación de métodos `create()`, `readAll()`, `update()` y `delete()` en las clases DAO (`PedidoDAO`, `RepartidorDAO`, `EntregaDAO`).
+- **Seguridad en Consultas:** Uso estricto de `PreparedStatement` para prevenir inyección SQL y `ResultSet` para la lectura de datos.
+- **Gestión Eficiente de Recursos:** Cierre seguro de conexiones mediante `try-with-resources` y manejo de excepciones con mensajes claros al usuario via `JOptionPane`.
 
-### 2. Patrón de Diseño DAO (Data Access Object)
-- **Capa de Persistencia:** Separación limpia de la lógica de negocio y la interfaz gráfica respecto a las operaciones SQL (`INSERT`, `SELECT`).
-- **Prevención de Inyección SQL:** Implementación estricta de `PreparedStatement` para parametrizar de forma segura todas las consultas enviadas a la base de datos.
-- **Mapeo Objeto-Relacional Manual:** Conversión transparente entre registros de las tablas MySQL y las instancias de objetos Java (`Pedido`, `Repartidor`, `Entrega`).
+### 2. Interfaz Gráfica Dinámica (Java Swing)
+- **Formularios con Validación:** Control de campos obligatorios y formatos antes de ejecutar operaciones sobre la base de datos.
+- **Visualización y Gestión en Tablas (`JTable`):** Sincronización en tiempo real para consultar, modificar el estado o eliminar registros de la base de datos.
+- **Relaciones mediante `JComboBox`:** Asignación interactiva de entregas vinculando `Pedido` y `Repartidor` mediante desplegables cargados dinámicamente desde la BD.
 
-### 3. Interfaz Gráfica con Swing e Integración en Tiempo Real
-- **Formularios de Registro:** Captura de datos validados para pedidos, repartidores y asignación de entregas mediante componentes Swing (`JTextField`, `JComboBox`).
-- **Visualización Dinámica (`JTable`):** Consulta e inserción de datos en tiempo real mediante `DefaultTableModel`, reflejando directamente el contenido almacenado en la base de datos.
-
-### 4. Integridad de Datos y Tipado Seguro
-- **Soporte de Fechas y Horas:** Mapeo de `LocalDate` y `LocalTime` de Java 8+ hacia tipos SQL (`DATE` y `TIME`) en la tabla `entrega`.
-- **Persistencia de Enums:** Conversión bidireccional entre la enumeración `EstadoPedido` (`PENDIENTE`, `EN_REPARTO`, `ENTREGADO`) y la columna `VARCHAR` de MySQL.
+### 3. Arquitectura y Buenas Prácticas
+- **Separación en Capas:** Estructura limpia basada en los paquetes `model` (entidades y enums), `dao` (persistencia) y `view` (interfaz Swing).
+- **Tipado Seguro:** Mapeo de enumeraciones (`EstadoPedido`) y tipos temporales (`LocalDate`, `LocalTime`) a MySQL.
 
 ---
 
@@ -60,7 +56,9 @@ src/
 │   ├── Pedido.java
 │   └── Repartidor.java
 └── view/
+    ├── VentanaListaEntregas.java
     ├── VentanaListaPedidos.java
+    ├── VentanaListaRepartidores.java
     ├── VentanaPrincipal.java
     ├── VentanaRegistroEntrega.java
     ├── VentanaRegistroPedido.java
@@ -68,8 +66,8 @@ src/
 
 --
 
-**Fecha de entrega: [28/09/2026]
+**Fecha de entrega: [05/10/2026]
 
 ---
 
-© Duoc UC | Escuela de Informática y Telecomunicaciones | Actividad Formativa 5: Conectando aplicaciones java con bases de datos mediante JDBC
+© Duoc UC | Escuela de Informática y Telecomunicaciones | Actividad Sumativa 3: Persistiendo datos con objetos y bases de datos.
