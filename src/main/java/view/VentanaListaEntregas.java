@@ -2,11 +2,14 @@ package view;
 
 import dao.EntregaDAO;
 import model.Entrega;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+
+/**
+ * Clase que muestra el historial de entregas realizadas en una tabla
+ */
 
 public class VentanaListaEntregas extends JFrame {
 

@@ -15,7 +15,6 @@ import model.Pedido;
  */
 
 public class PedidoDAO {
-
     public boolean guardar(Pedido pedido) {
         String sql = "INSERT INTO pedidos (direccion, tipo, estado) VALUES (?, ?, ?)";
 

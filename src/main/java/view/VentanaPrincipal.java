@@ -58,17 +58,16 @@ private void crearComponentes() {
 
     add(panelBotones, BorderLayout.CENTER);
 
-    // Eventos
     btnRegistrarPedido.addActionListener(e -> new VentanaRegistroPedido().setVisible(true));
     btnListarPedidos.addActionListener(e -> new VentanaListaPedidos().setVisible(true));
     btnRegistrarRepartidor.addActionListener(e -> new VentanaRegistroRepartidor().setVisible(true));
     btnListarRepartidores.addActionListener(e -> new VentanaListaRepartidores().setVisible(true));
     btnRegistrarEntrega.addActionListener(e -> new VentanaRegistroEntrega().setVisible(true));
     btnListarEntregas.addActionListener(e -> new VentanaListaEntregas().setVisible(true));
-}
+    }
 
 public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> new VentanaPrincipal().setVisible(true));
-}
+ }
 }
 

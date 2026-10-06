@@ -14,13 +14,10 @@ import java.util.ArrayList;
  */
 
 public class EntregaDAO {
-
     public boolean guardar(Entrega entrega) {
         String sql = "INSERT INTO entregas (id_pedido, id_repartidor, fecha, hora) VALUES (?, ?, ?, ?)";
-
         try (Connection con = ConexionBD.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
-
             ps.setInt(1, entrega.getIdPedido());
             ps.setInt(2, entrega.getIdRepartidor());
             ps.setDate(3, Date.valueOf(entrega.getFecha()));

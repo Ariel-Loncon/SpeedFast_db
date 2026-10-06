@@ -2,11 +2,14 @@ package view;
 
 import dao.RepartidorDAO;
 import model.Repartidor;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+
+/**
+ * Clase que permite editar o eliminar a los repartidores mediante una tabla
+ */
 
 public class VentanaListaRepartidores extends JFrame {
 
